@@ -5,13 +5,88 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>商品详情</title>
     <link rel="stylesheet" href="style.css">
+    <!-- 引入 Swiper.js 用于滑动轮播效果 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <!-- 引入 qrcode.js 用于生成二维码 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
 <body>
     <div class="product-detail">
+        <!-- 电商购物下单区块 -->
+        <section class="shopping-section">
+            <div class="header-container">
+                <div class="title-group">
+                    <h1 class="item-title">宁茶遗韵 · 非遗青瓷套组</h1>
+                    <p class="item-subtitle">精美非遗工艺 | 闽东山海韵味 | 龙泉青瓷匠心 | 官方正版授权</p>
+                </div>
+                <div class="logo-box">
+                    <img src="logo.png" alt="Logo" class="brand-logo">
+                </div>
+            </div>
+            
+            <div class="rating-info">
+                 <span class="stars">★★★★★</span>
+                 <span class="score">4.9分</span>
+                 <span class="divider">|</span>
+                 <span class="reviews">2,847条评价</span>
+                 <span class="divider">|</span>
+                 <span class="monthly-sales">月销 500+件</span>
+             </div>
+ 
+             <!-- 图片轮换区域 -->
+              <div class="product-slider swiper">
+                  <div class="swiper-wrapper">
+                      <div class="swiper-slide"><img src="002.png" alt="轮播图 1"></div>
+                      <div class="swiper-slide"><img src="003.png" alt="轮播图 2"></div>
+                      <div class="swiper-slide"><img src="004.png" alt="轮播图 3"></div>
+                      <div class="swiper-slide"><img src="005.png" alt="轮播图 4"></div>
+                      <div class="swiper-slide"><img src="006.png" alt="轮播图 5"></div>
+                  </div>
+                  <!-- 分页器 -->
+                   <div class="swiper-pagination"></div>
+                   <!-- 导航按钮 -->
+                   <div class="swiper-button-prev"></div>
+                   <div class="swiper-button-next"></div>
+               </div>
+ 
+             <div class="price-card">
+                <div class="price-row">
+                    <span class="price-label">活动价</span>
+                    <span class="currency">¥</span>
+                    <span class="current-price">168</span>
+                    <span class="original-price">¥298</span>
+                </div>
+                <div class="coupons">
+                    <span class="coupon-tag">限时优惠</span>
+                    <span class="coupon-tag">满100减30</span>
+                    <span class="coupon-tag">新人专享券</span>
+                </div>
+            </div>
+
+            <div class="quantity-selector">
+                <span class="selector-label">数量</span>
+                <div class="counter">
+                    <button class="minus">-</button>
+                    <input type="text" value="1" readonly>
+                    <button class="plus">+</button>
+                </div>
+                <span class="stock">库存 50件</span>
+            </div>
+
+            <div class="action-buttons">
+                <button class="buy-now">立即购买</button>
+                <button class="add-to-cart">
+                    <span class="cart-icon">🛒</span> 加入购物车
+                </button>
+            </div>
+        </section>
+
         <div class="image-item">
             <img src="001.png" alt="商品详情图 1">
+        </div>
+        <div class="image-item">
+            <img src="007.png" alt="商品详情图 7">
         </div>
         <div class="image-item">
             <img src="002.png" alt="商品详情图 2">
@@ -41,7 +116,7 @@
             <img src="006.png" alt="商品详情图 6">
         </div>
         <div class="image-item">
-            <img src="007.png" alt="商品详情图 7">
+            
         </div>
     </div>
 
@@ -106,6 +181,26 @@
             script.onload = generateQRCode;
             document.getElementById("qrcode-status").innerText = "正在加载...";
         }
+
+        // 轮换图逻辑 (Swiper)
+        const swiper = new Swiper('.product-slider', {
+            loop: true,
+            centeredSlides: true,
+            slidesPerView: 'auto',
+            spaceBetween: 10,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
     </script>
 </body>
 </html>

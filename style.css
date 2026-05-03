@@ -93,6 +93,293 @@ body {
         line-height: 1.6;
     }
 }
+/* 购物区块样式 */
+.shopping-section {
+    padding: 25px 20px;
+    background-color: #fff;
+    border: 1px solid #e0e0e0; /* 添加明显的细边框 */
+    border-radius: 12px; /* 增加圆角感 */
+    margin: 10px; /* 增加边距使边框更明显 */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    position: relative;
+    z-index: 20;
+}
+
+/* 详情页区域样式 */
+.product-detail {
+    width: 100%;
+    max-width: 750px;
+    margin: 40px auto; /* 增加上下边距，与购买页拉开明显距离 */
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border: 1px solid #e0e0e0; /* 为详情页添加边框 */
+    border-radius: 12px;
+    overflow: hidden; /* 确保图片不会超出圆角边框 */
+}
+
+/* 图片轮播样式 */
+.product-slider {
+    width: 100%;
+    margin: 15px 0;
+    padding: 10px 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.swiper-slide {
+    width: 50% !important;
+    aspect-ratio: 1 / 1;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.5s ease;
+    opacity: 0.3;
+    transform: scale(0.8);
+}
+
+.swiper-slide-active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 导航按钮美化 - 浅灰色无底框箭头 */
+.swiper-button-prev,
+.swiper-button-next {
+    color: #e0e0e0 !important; /* 使用更浅的灰色 */
+    background: none !important; /* 确保无底框 */
+    width: auto;
+    height: auto;
+    box-shadow: none; /* 移除投影 */
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+    font-size: 32px; /* 进一步增大箭头尺寸，使其更易点击 */
+    font-weight: bold;
+}
+
+.swiper-button-prev {
+    left: 2px;
+}
+
+.swiper-button-next {
+    right: 2px;
+}
+
+.swiper-pagination-bullet {
+    background: #ccc;
+    opacity: 0.5;
+}
+
+.swiper-pagination-bullet-active {
+    background: #34495e;
+    opacity: 1;
+    width: 15px;
+    border-radius: 4px;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+}
+
+.title-group {
+    flex: 1;
+}
+
+.logo-box {
+    margin-left: 20px;
+    /* 保持与下方价格卡片的内边距一致感 */
+}
+
+.brand-logo {
+    max-width: 80px; /* 根据实际 logo 大小调整 */
+    height: auto;
+    display: block;
+}
+
+.item-title {
+    font-size: 22px;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.item-subtitle {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 15px;
+}
+
+.rating-info {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    color: #999;
+    margin-bottom: 20px;
+}
+
+.stars {
+    color: #ffc107;
+    margin-right: 8px;
+    font-size: 14px;
+}
+
+.score {
+    color: #888;
+    margin-right: 5px;
+}
+
+.divider {
+    margin: 0 10px;
+    color: #eee;
+}
+
+.price-card {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+}
+
+.price-row {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 12px;
+}
+
+.price-label {
+    font-size: 13px;
+    color: #666;
+    margin-right: 10px;
+}
+
+.currency {
+    font-size: 18px;
+    color: #333;
+    font-weight: 600;
+}
+
+.current-price {
+    font-size: 32px;
+    color: #333;
+    font-weight: bold;
+    margin: 0 5px;
+}
+
+.original-price {
+    font-size: 14px;
+    color: #bbb;
+    text-decoration: line-through;
+    margin-left: 5px;
+}
+
+.coupons {
+    display: flex;
+    gap: 8px;
+}
+
+.coupon-tag {
+    font-size: 11px;
+    color: #888;
+    background: #eee;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.quantity-selector {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.selector-label {
+    font-size: 14px;
+    color: #666;
+    margin-right: 20px;
+}
+
+.counter {
+    display: flex;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-right: 15px;
+}
+
+.counter button {
+    width: 35px;
+    height: 35px;
+    border: none;
+    background: #fff;
+    font-size: 18px;
+    color: #666;
+    cursor: pointer;
+}
+
+.counter button:hover {
+    background: #f5f5f5;
+}
+
+.counter input {
+    width: 45px;
+    height: 35px;
+    border: none;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+}
+
+.stock {
+    font-size: 13px;
+    color: #999;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.action-buttons button {
+    flex: 1;
+    height: 48px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.buy-now {
+    background-color: #34495e;
+    color: #fff;
+}
+
+.add-to-cart {
+    background-color: #f1f3f5;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.action-buttons button:hover {
+    opacity: 0.9;
+}
+
+/* 二维码容器样式 */
 #qrcode-container {
     position: fixed;
     right: 20px;
