@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品详情</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- 引入 qrcode.js 用于生成二维码 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+    <div class="product-detail">
+        <div class="image-item">
+            <img src="001.png" alt="商品详情图 1">
+        </div>
+        <div class="image-item">
+            <img src="002.png" alt="商品详情图 2">
+            <div class="overlay-text custom-pos">
+                <h3>「宁德山海壶」</h3>
+                <p>以青瓷为底，将宁德太姥山的奇秀、霞浦滩涂的潮韵，与畲族盘金绣、水纹非遗纹样相融，以描金线条勾勒山海，把闽东向海而生的渔耕记忆与非遗风骨，凝于方寸茶器之间。</p>
+            </div>
+        </div>
+        <div class="image-item">
+            <img src="003.png" alt="商品详情图 3">
+            <div class="overlay-text center-pos">
+                <h3>「宁德山海杯」</h3>
+                <p>以青瓷为底，描金勾勒畲族云纹，晕染闽东山海。将太姥山的灵秀、霞浦滩涂的潮意，与非遗盘金绣的精致相融，方寸间藏尽宁德山海非遗的温润风骨。</p>
+            </div>
+        </div>
+        <div class="image-item">
+            <img src="004.png" alt="商品详情图 4">
+            <div class="overlay-text center-pos">
+                <h3>「宁德听潮杯」</h3>
+                <p>以青瓷为底，描金勾勒畲族云纹，浪涛晕染出霞浦潮声，远山复刻太姥灵秀。将闽东渔耕文化与非遗纹样凝于杯身，轻握间，仿佛听得见宁德山海的潮起风吟。</p>
+            </div>
+        </div>
+        <div class="image-item">
+            <img src="005.png" alt="商品详情图 5">
+        </div>
+        <div class="image-item">
+            <img src="006.png" alt="商品详情图 6">
+        </div>
+        <div class="image-item">
+            <img src="007.png" alt="商品详情图 7">
+        </div>
+    </div>
+
+    <!-- 二维码容器 -->
+    <div id="qrcode-container">
+        <div id="qrcode"></div>
+        <p id="qrcode-status">扫码预览</p>
+        <div id="url-warning" style="display:none; font-size: 10px; color: #ff4d4f; margin-top: 5px; max-width: 120px;">
+            检测到本地文件，手机扫码将无法打开。请部署到服务器。
+        </div>
+    </div>
+
+    <script>
+        /**
+         * 配置说明：
+         * 1. 如果您已经有了公网域名（如 https://yourname.github.io/tea/），请将其填写在下面的 targetUrl 中。
+         * 2. 如果 targetUrl 为空，则默认使用当前浏览器地址栏 of the URL。
+         */
+        const targetUrl = ""; // <--- 在这里填入您的线上网址，例如 "https://example.com"
+
+        function generateQRCode() {
+            const qrcodeElement = document.getElementById("qrcode");
+            const statusElement = document.getElementById("qrcode-status");
+            const warningElement = document.getElementById("url-warning");
+            
+            // 优先使用配置的 targetUrl，否则使用当前页面 URL
+            const currentUrl = targetUrl || window.location.href;
+            
+            // 检测是否是本地文件协议（且没有配置 targetUrl）
+            if (currentUrl.startsWith('file://') && !targetUrl) {
+                warningElement.style.display = 'block';
+            } else {
+                warningElement.style.display = 'none';
+            }
+
+            try {
+                // 清空之前的二维码
+                qrcodeElement.innerHTML = "";
+                
+                // 生成二维码
+                new QRCode(qrcodeElement, {
+                    text: currentUrl,
+                    width: 100,
+                    height: 100,
+                    colorDark : "#000000",
+                    colorLight : "#ffffff",
+                    correctLevel : QRCode.CorrectLevel.H
+                });
+                console.log("二维码已生成:", currentUrl);
+            } catch (e) {
+                console.error("二维码生成失败:", e);
+                statusElement.innerText = "生成失败";
+            }
+        }
+
+        // 确保脚本加载完成后再执行
+        if (typeof QRCode !== 'undefined') {
+            generateQRCode();
+        } else {
+            // 如果 CDN 加载慢，等待加载
+            const script = document.querySelector('script[src*="qrcode"]');
+            script.onload = generateQRCode;
+            document.getElementById("qrcode-status").innerText = "正在加载...";
+        }
+    </script>
+</body>
+</html>
